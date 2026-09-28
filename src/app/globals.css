@@ -1,0 +1,107 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Spec Hub theme — high-contrast "spec sheet".
+ * Mirrors the Claude Design canvas: near-black ground, one signal accent.
+ * `--primary` is overridden per organisation (organisations.primary_color)
+ * on the dashboard wrapper; see src/lib/color.ts.
+ */
+:root {
+  --radius: 0.75rem;
+
+  --background: #fafaf7;
+  --foreground: #0a0a0b;
+  --card: #ffffff;
+  --card-foreground: #0a0a0b;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0b;
+  --primary: #ff5f1f;
+  --primary-foreground: #0a0a0b;
+  --secondary: #f0efea;
+  --secondary-foreground: #0a0a0b;
+  --muted: #f0efea;
+  --muted-foreground: #55555c;
+  --accent: #f0efea;
+  --accent-foreground: #0a0a0b;
+  --destructive: #c62828;
+  --border: #dad9d2;
+  --input: #c9c8c0;
+  --ring: #ff5f1f;
+  --canvas: #f0efea;
+  --canvas-dot: #d4d3cb;
+}
+
+.dark {
+  --background: #0a0a0b;
+  --foreground: #f4f3ee;
+  --card: #121214;
+  --card-foreground: #f4f3ee;
+  --popover: #121214;
+  --popover-foreground: #f4f3ee;
+  --primary: #ff5f1f;
+  --primary-foreground: #0a0a0b;
+  --secondary: #1a1a1d;
+  --secondary-foreground: #f4f3ee;
+  --muted: #1a1a1d;
+  --muted-foreground: #a3a3ab;
+  --accent: #1a1a1d;
+  --accent-foreground: #f4f3ee;
+  --destructive: #ff6b6b;
+  --border: #2a2a2f;
+  --input: #3a3a40;
+  --ring: #ff5f1f;
+  --canvas: #0e0e10;
+  --canvas-dot: #2a2a2f;
+}
+
+@theme inline {
+  --font-sans: var(--font-plex);
+  --font-display: var(--font-bricolage);
+  --font-mono: var(--font-jetbrains);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-canvas: var(--canvas);
+  --color-canvas-dot: var(--canvas-dot);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-jetbrains);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
